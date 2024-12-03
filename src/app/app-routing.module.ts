@@ -11,6 +11,34 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'articles',
+    loadChildren: () => import('./articles/articles.module').then( m => m.ArticlesPageModule)
+  },
+  {
+    path: 'art-detail',
+    loadChildren: () => import('./art-detail/art-detail.module').then( m => m.ArtDetailPageModule)
+  },
+  {
+    path: 'signup',
+    loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
+  },
+  {
+    path: 'signin',
+    loadChildren: () => import('./signin/signin.module').then( m => m.SigninPageModule)
+  },
+  {
+    path: 'submission',
+    loadChildren: () => import('./submission/submission.module').then( m => m.SubmissionPageModule)
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
+  },
+  {
+    path: 'search',
+    loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+  },
 ];
 
 @NgModule({

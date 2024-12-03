@@ -1,0 +1,53 @@
+<header>
+  <div class="logo">
+    <img src="assets/img/logo.png" alt="">
+  </div>
+  <ul class="nav-list">
+    <li><a routerLink="/">Home</a></li>
+    <li><a href="">About</a></li>
+    <li><a href="">Archives</a></li>
+    <li><a href="">Announcement</a></li>
+    <li><a href="">Submission</a></li>
+    <li>
+      <ion-button fill="outline" color="light" routerLink="/signin">Log In</ion-button>
+    </li>
+    <li>
+      <ion-button fill="outline" color="light" routerLink="/signup">Sign Up</ion-button>
+    </li>
+  </ul>
+  <ion-button color="light" fill="clear" id="menu-button" (click)="openMenu()">
+    <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+  </ion-button>
+</header>
+
+<ion-content>
+
+  <div class="container">
+    <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+      <h2>Welcome, Sign Up</h2>
+      <div class="inputs">
+        <ion-input formControlName="fname" type="text" fill="outline" labelPlacement="floating" label="First Name" placeholder="First Name"></ion-input>
+        <ion-input formControlName="lname" type="text" fill="outline" labelPlacement="floating" label="Last Name" placeholder="Last Name"></ion-input>
+        <ion-input formControlName="email" type="email" fill="outline" labelPlacement="floating" label="Email" placeholder="Email"></ion-input>
+        <ion-input formControlName="affliation" type="text" fill="outline" labelPlacement="floating" label="Affliation" placeholder="Affliation"></ion-input>
+        <ion-input formControlName="phone" type="tel" fill="outline" labelPlacement="floating" label="Phone Number" placeholder="Phone Number"></ion-input>
+        <ion-select formControlName="country" fill="outline" label="Country" labelPlacement="floating">
+          <ion-select-option>Nigeria</ion-select-option>
+          <ion-select-option>Niger</ion-select-option>
+          <ion-select-option>Togo</ion-select-option>
+        </ion-select>
+        <ion-input formControlName="password" type="password" fill="outline" labelPlacement="floating" label="Password" placeholder="Password"></ion-input>
+        <ion-input formControlName="repeat_password" type="password" fill="outline" labelPlacement="floating" label="Repeat Password" placeholder="Repeat Password"></ion-input>
+      </div>
+      <ion-button expand="block" type="submit" color="medium" mode="ios" [disabled]="!regForm.valid">Sign Up</ion-button>
+      <p>Already have an account <span routerLink="/signin">Sign In</span></p>
+    </form>
+  </div>
+
+  <footer>
+    <p>All Rights Reserved.</p>
+    <p>Niger State University, Keffi, Nigeria</p>
+    <p>&copy; Copyright {{year}}</p>
+</footer>
+
+</ion-content>

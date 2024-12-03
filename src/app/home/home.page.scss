@@ -1,27 +1,21 @@
-#container {
-  text-align: center;
+ion-content {
+    
+    .container {
+        
+        .articles {
+            margin-bottom: 50px;
+            ion-card {
+                ion-card-content {
+                    h2 {
+                        font-size: 1.3rem;
+                        font-weight: 600;
+                    }
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+                    p {
+                        margin-bottom: 1rem;
+                    }
+                }
+            }
+        }
+    }
 }

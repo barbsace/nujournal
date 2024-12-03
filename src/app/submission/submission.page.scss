@@ -1,0 +1,13 @@
+.container  {
+    margin-top: 5rem;
+
+    .alert {
+        padding: 20px;
+        border-left: 5px solid blue;
+        background: var(--hero-color);
+    }
+
+    form {
+        margin: 3rem 0;
+    }
+}

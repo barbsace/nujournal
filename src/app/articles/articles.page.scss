@@ -1,0 +1,28 @@
+ion-content {
+    .container {
+        .top-title {
+            margin-bottom: 1rem;
+            h2 {
+                font-size: 1.5rem;
+                font-weight: 600;
+            }
+        }
+
+        .articles {
+            margin-bottom: 50px;
+            ion-card {
+                ion-card-content {
+                    h2 {
+                        font-size: 1.3rem;
+                        font-weight: 600;
+                    }
+
+                    p {
+                        margin-bottom: 1rem;
+                    }
+                }
+            }
+        }
+    }
+
+}

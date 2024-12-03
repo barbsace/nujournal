@@ -1,0 +1,120 @@
+<header>
+  <div class="logo">
+    <img src="assets/icon/favicon.png" alt="">
+  </div>
+  <ul class="nav-list">
+    <li><a routerLink="/">Home</a></li>
+    <!-- <li><a href="">About</a></li> -->
+    <li><a routerLink="/articles">Archives</a></li>
+    <li><a routerLink="/">Announcement</a></li>
+    <li><a routerLink="/submission">Submission</a></li>
+    <li>
+      <ion-button fill="outline" color="light" *ngIf="isLogged; else logout" (click)="clear()">Log Out</ion-button>
+      <ng-template #logout>
+        <ion-button fill="outline" routerLink="/signin" color="light">Log In</ion-button>
+      </ng-template>
+    </li>
+    <li>
+      <ion-button fill="outline" color="light" routerLink="/signup" *ngIf="!isLogged">Sign Up</ion-button>
+    </li>
+  </ul>
+  <ion-button color="light" fill="clear" id="menu-button" (click)="openMenu()">
+    <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+  </ion-button>
+</header>
+
+<ion-content>
+  <div class="hero">
+    <h1>Niger State University</h1>
+    <ion-searchbar mode="ios" showClearButton="always" type="text" routerLink="/search"></ion-searchbar>
+  </div>
+
+  <div class="container">
+    <div class="alert" *ngIf="!isLogged">
+      <p><a routerLink="/signin">Log In</a> or <a routerLink="/signup">Register</a> to make a submission</p>
+    </div>
+
+    <h2>Submission Preparation Checklist</h2>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione fugit voluptatibus hic voluptatem, repellendus
+      libero aliquam omnis quos quaerat ex voluptatum modi laudantium deleniti ad dolor sequi qui quam praesentium.
+    </p>
+
+    <h2>Author Guidelines</h2>
+    <p>
+      EJSS receives manuscript submissions through a web-based system and e-mail submission
+      (esutfssjournal&#64;gmail.com) . Manuscripts can be uploaded through an easy, step-by-step process.
+    </p>
+
+    <h2>Compliance with these policies is verified upon submission of manuscripts:</h2>
+    <p>
+      Length: Manuscripts must not exceed 6,000 words in length, including the abstract, references, and notes. The word
+      count must appear on the title page. Rare exceptions to this policy can be requested as part of the submission
+      process (justified by the nature, number, or complexity of studies or methods reported, for example). Even in such
+      cases, authors should strive to come as close as possible to 6,000 words.
+    </p>
+    <p>
+      Abstract and keywords: The page following the title page must include an abstract of no more than 250 words, and
+      below the abstract, 4-5 keywords.
+    </p>
+
+    <form *ngIf="isLogged" (ngSubmit)="onSubmit(form)" #form="ngForm">
+      <h2>Submit Article</h2>
+      <!-- <div class="inputs"> -->
+      <ion-input required [(ngModel)]="author" name="author" type="text" fill="outline" labelPlacement="floating"
+        label="Author" placeholder="Author"></ion-input>
+      <ion-input required [(ngModel)]="department" name="department" type="text" fill="outline"
+        labelPlacement="floating" label="Department" placeholder="Department"></ion-input>
+      <ion-input required [(ngModel)]="title" name="title" type="text" fill="outline" labelPlacement="floating"
+        label="Article Title" placeholder="Article Title"></ion-input>
+      <ion-textarea required [(ngModel)]="abstract" name="abstract" rows="5" fill="outline" labelPlacement="floating"
+        label="Article Abstract" placeholder="Article Abstract"></ion-textarea>
+      <!-- <ion-input [(ngModel)]="article" name="article" fill="outline" labelPlacement="floating" (click)="fileInput.click()" label="Article" placeholder="Article"></ion-input> -->
+      <!-- <input type="file" #fileInput  accept="application/pdf"/> -->
+      <ion-button expand="block" mode="ios" color="medium" fill="outline"
+        (click)="onFileSelected()">Article</ion-button>
+      <ion-button expand="block" mode="ios" color="medium" type="submit" [disabled]="!form.valid">Submit
+        Article</ion-button>
+    </form>
+
+    <img src="" *ngIf="article" alt="">
+    <!-- <a href="" *ngIf="formData.article">View File</a> -->
+
+
+    <!-- <form [formGroup]="subForm" (ngSubmit)="onSubmit()" *ngIf="isLogged">
+      <h2>Submit Article</h2>
+      <div class="inputs">
+        <ion-input formControlName="author" type="text" fill="outline" labelPlacement="floating" label="Author Name"
+          placeholder="First Name"></ion-input>
+        <ion-input formControlName="department" type="text" fill="outline" labelPlacement="floating" label="Department"
+          placeholder="Department"></ion-input>
+        <ion-input formControlName="title" type="text" fill="outline" labelPlacement="floating" label="Article Title" placeholder="Article Title"></ion-input>
+        <ion-textarea formControlName="abstract" rows="5" fill="outline" labelPlacement="floating" label="Article Abstract" placeholder="Article Abstract"></ion-textarea>
+        <ion-input formControlName="article" type="file" fill="outline" labelPlacement="floating" label="Article" placeholder="Article"></ion-input>
+      </div>
+      <ion-list>
+        <ion-item *ngFor="let input of authors.controls; let i = index" [formGroupName]="i">
+          <ion-label position="floating">Author {{ i + 1 }}</ion-label>
+          <ion-input formControlName="value"></ion-input>
+          <ion-button fill="clear" color="danger" (click)="removeAuthor(i)">
+            Remove
+          </ion-button>
+        </ion-item>
+      </ion-list>
+  
+      <ion-button expand="block" (click)="addAuthors()">Add Author</ion-button>
+      <ion-button expand="block" mode="ios" color="medium" type="submit" [disabled]="!subForm.invalid">Submit Article</ion-button>
+    </form> -->
+  </div>
+
+
+
+
+
+  <footer>
+    <p>All Rights Reserved.</p>
+    <p>Niger State University, Keffi, Nigeria</p>
+    <p>&copy; Copyright {{year}}</p>
+  </footer>
+
+</ion-content>

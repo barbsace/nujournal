@@ -1,0 +1,84 @@
+<ion-content>
+  <header>
+    <div class="logo">
+      <img src="assets/img/logo.png" alt="">
+    </div>
+    <ul class="nav-list">
+      <li><a routerLink="/">Home</a></li>
+      <!-- <li><a href="">About</a></li> -->
+      <li><a routerLink="/articles">Archives</a></li>
+      <li><a routerLink="/submission">Announcement</a></li>
+      <li><a routerLink="/submission">Submission</a></li>
+      <li>
+        <ion-button fill="outline" color="light" *ngIf="isLogged; else logout" (click)="clear()">Log Out</ion-button>
+        <ng-template #logout>
+          <ion-button fill="outline" routerLink="/signin" color="light">Log In</ion-button>
+        </ng-template>
+      </li>
+      <li>
+        <ion-button fill="outline" color="light" routerLink="/signup" *ngIf="!isLogged">Sign Up</ion-button>
+      </li>
+    </ul>
+    <ion-button color="light" fill="clear" id="menu-button" (click)="openMenu()">
+      <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+    </ion-button>
+  </header>
+
+  <div class="hero">
+    <h1>Niger State University</h1>
+  </div>
+
+  <div class="container">
+
+    <div class="search-form">
+      <!-- Input Field -->
+      <ion-input type="text" labelPlacement="floating" label="Search text" placeholder="Search text"
+        [(ngModel)]="searchTerm" class="search-input">
+      </ion-input>
+
+      <!-- Select Dropdown -->
+      <!-- <ion-select 
+        labelPlacement="floating"
+        label="Search by"
+        placeholder="Search By" 
+        [(ngModel)]="searchBy"
+        class="search-select">
+        <ion-select-option value="title" selected>Title</ion-select-option>
+        <ion-select-option value="author">Author</ion-select-option>
+        <ion-select-option value="volume">Volume</ion-select-option>
+      </ion-select> -->
+
+      <!-- Submit Button -->
+      <ion-button expand="block" mode="ios" fill="outline" (click)="filterPdfs()" class="search-button">
+        Search
+      </ion-button>
+    </div>
+
+    <!-- <ion-searchbar mode="ios" [(ngModel)]="searchTerm" (ionInput)="filterPdfs()" showClearButton="always" type="text"></ion-searchbar> -->
+
+    <div *ngIf="searchedArticles.length > 0; else noresult">
+      
+      <h2>{{searchedArticles.length}} Result Found</h2>
+
+      <ion-row class="articles justify-content-between">
+        <ion-col *ngFor="let item of searchedArticles; let id = index" routerLink="/art-detail" size="12" size-md="6" size-lg="6">
+          <ion-card mode="ios">
+            <ion-card-content>
+              <img src={{item.image}} alt="">
+              <h2>{{item.title}}</h2>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit qui, architecto blanditiis
+                maxime id aliquid necessitatibus delectus deserunt cupiditate iusto.
+              </p>
+              <ion-button fill="outline" expand="block"  routerLink="/art-detail" [state]="item">View Article</ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </div>
+    <ng-template #noresult>
+      <h2>{{searchedArticles.length}} Result Found</h2>
+    </ng-template>
+
+  </div>
+</ion-content>

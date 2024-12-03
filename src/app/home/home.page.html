@@ -1,20 +1,88 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- <app-header></app-header> -->
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+    <header>
+        <div class="logo">
+            <img src="assets/img/logo.png" alt="">
+        </div>
+        <ul class="nav-list">
+            <li><a routerLink="/">Home</a></li>
+            <!-- <li><a href="">About</a></li> -->
+            <li><a routerLink="/articles">Archives</a></li>
+            <li><a routerLink="/submission">Announcement</a></li>
+            <li><a routerLink="/submission">Submission</a></li>
+            <li>
+                <ion-button fill="outline" color="light"*ngIf="isLogged; else logout" (click)="clear()">Log Out</ion-button>
+                <ng-template #logout>
+                    <ion-button fill="outline" routerLink="/signin" color="light">Log In</ion-button>
+                </ng-template>
+            </li>
+            <li>
+                <ion-button fill="outline" color="light" routerLink="/signup" *ngIf="!isLogged">Sign Up</ion-button>
+            </li>
+        </ul>
+        <ion-button color="light" fill="clear" id="menu-button" (click)="openMenu()">
+            <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+        </ion-button>
+    </header>
+    <!-- <app-hero></app-hero> -->
+    <div class="hero">
+        <h1>Niger State University</h1>
+        <ion-searchbar mode="ios" showClearButton="always" type="text" routerLink="/search"></ion-searchbar>
+    </div>
+
+    <div class="container">
+        
+
+    <ion-row>
+        <ion-col size="12">
+          <h2>About</h2>
+          <p>
+            The Journal of Management Research and Development (JMRD) is a quarterly publication of the Department of
+            Business Administration, Faculty of Administration, Nasarawa State University, Keffi. The JMRD focuses on
+            advancing the knowledge and practice of management in various fields. The journal publishes original research
+            articles, reviews, and case studies that explore emerging trends, best practices, and innovative solutions in
+            management. It provides a platform for academics, researchers, and practitioners to share their insights,
+            theories, and empirical findings, and encourages interdisciplinary approaches to problem-solving.
+          </p>
+          <p>
+            The Journal of Management Research and Development (JMRD) also aims to promote the dissemination of knowledge
+            and the application of management principles in various sectors. It covers topics such as strategic
+            management, organizational behavior, human resource management, entrepreneurship, innovation, marketing,
+            finance, operations management, and related fields. The JMRD targets a wide range of readers, including
+            researchers, educators, students, policy-makers, and practitioners who seek to enhance their understanding and
+            skills in management. Overall, the JMRD serves as a valuable resource for advancing management theory and
+            practice, and for shaping the future of management.
+          </p>
+        </ion-col>
+      </ion-row>
+        <!-- <ion-button >clear</ion-button>
+        <ion-button (click)="read()">read</ion-button> -->
+        <div class="top-title">
+            <h2>Featured Articles</h2>
+            <ion-button fill="clear" size="large" routerLink="/articles">See All</ion-button>
+        </div>
+        <ion-row class="articles justify-content-between">
+            <ion-col *ngFor="let item of articles" routerLink="/art-detail" [state]="item" size="12" size-md="6" size-lg="4">
+                <ion-card mode="ios">
+                    <ion-card-content>
+                        <img src={{item.image}} alt="">
+                        <h2>{{item.name}}</h2>
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit qui, architecto blanditiis
+                            maxime id aliquid necessitatibus delectus deserunt cupiditate iusto.
+                        </p>
+                        <ion-button fill="outline" expand="block">View Article</ion-button>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </div>
+
+    <footer>
+        <p>All Rights Reserved.</p>
+        <p>Niger State University, Keffi, Nigeria</p>
+        <p>&copy; Copyright {{year}}</p>
+    </footer>
 </ion-content>

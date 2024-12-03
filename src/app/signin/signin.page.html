@@ -1,0 +1,42 @@
+<header>
+  <div class="logo">
+    <img src="assets/img/logo.png" alt="">
+  </div>
+  <ul class="nav-list">
+    <li><a routerLink="/">Home</a></li>
+    <li><a href="">About</a></li>
+    <li><a href="">Archives</a></li>
+    <li><a href="">Announcement</a></li>
+    <li><a href="">Submission</a></li>
+    <li>
+      <ion-button fill="outline" color="light" routerLink="/signin">Log In</ion-button>
+    </li>
+    <li>
+      <ion-button fill="outline" color="light" routerLink="/signup">Sign Up</ion-button>
+    </li>
+  </ul>
+  <ion-button color="light" fill="clear" id="menu-button" (click)="openMenu()">
+    <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+  </ion-button>
+</header>
+
+<ion-content>
+
+  <div class="container">
+    <form [formGroup]="logForm" (ngSubmit)="onSubmit()">
+      <h2>Welcome, Sign In</h2>
+      <ion-input formControlName="email" type="text" fill="outline" labelPlacement="floating" label="Email/Phone Number" placeholder="Email"></ion-input>
+      <ion-input formControlName="password" type="password" fill="outline" labelPlacement="floating" label="Password" placeholder="Password"></ion-input>
+      <ion-button expand="block" color="medium" mode="ios" type="submit" [disabled]="!logForm.valid">Sign In</ion-button>
+      <p><span>Forget Password?</span></p>
+      <p>Dont have an account <span routerLink="/signup">Sign Up</span></p>
+    </form>
+  </div>
+
+  <footer>
+    <p>All Rights Reserved.</p>
+    <p>Niger State University, Keffi, Nigeria</p>
+    <p>&copy; Copyright {{year}}</p>
+</footer>
+
+</ion-content>

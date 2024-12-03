@@ -1,0 +1,33 @@
+header {
+    width: 100%;
+    position: fixed;
+    // top: -100%;
+    // left: 0;
+    padding: 1rem 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+    background: rgb(58, 70, 85);
+
+    .logo img {
+        width: 50px;
+        height: 50px;
+    }
+
+    ul {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        list-style-type: none;
+    }
+
+    ul li a {
+        font-size: 1rem;
+        text-decoration: none;
+    }
+
+    ion-buttons {
+        display: none;
+    }
+}
